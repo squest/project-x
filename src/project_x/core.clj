@@ -72,8 +72,10 @@
   (cond (=< x 1) false
     (= x 2) true
     :else )))
-
-#(= nil (filter contain? %1 %2))
+(fn [x y] 
+  (if (contains? x y)
+  (= nil (x y))
+  true)
 
   
 
