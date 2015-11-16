@@ -46,36 +46,44 @@
   (if (empty? ns)
     '()
     (conj (kebalik (butlast ns)) (last ns))))
-    
+
+(defn prima [x y]
+  (cond (= x y) true
+    (zero? (rem x y)) false
+    :else (prima x (inc y))))
+
 (defn prime? [x]
   (cond (<= x 1) false
     (= x 2) true
-    (= x 3) true
-    (zero? (rem x 2)) false
-    (zero? (rem x 3)) false
-    :else true ))
+    :else (prima x 2)))
 
-(defn barisprima [x] (filter prime? (range x)))
+(defn listprima [x] 
+  (filter 
+    prime? (range x)))
+
+(defn factor [x]
+  (filter #(zero? (rem x %)) (range 1 x) ) )
 
 (def pro-6-1 
     (sum (map #(pangkat % 2) (range 101))))
 
 (def pro-6-2 (pangkat (sum (range 101)) 2))
 
+(defn pro-3 [x y]
+  (cond (= x (first y)) x
+    (= 0 (rem x (first y))) (pro-3 (quot x (first y)) (rest y))
+         :else (pro-3 x (rest y))))
+
+
+(defn pro-7 [x]
+  (nth (listprima 100000) x))
+         
+
 ;(defn pro-3 [x y] 
  ;   (if (= 1 (/ x (first y))) 
   ;    (first y)
    ;   (pro-3 
-    
 
-(defn prime? [x]
-  (cond (=< x 1) false
-    (= x 2) true
-    :else )))
-(fn [x y] 
-  (if (contains? x y)
-  (= nil (x y))
-  true)
 
   
 
